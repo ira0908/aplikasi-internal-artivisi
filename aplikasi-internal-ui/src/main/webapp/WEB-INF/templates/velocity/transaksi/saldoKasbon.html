@@ -1,0 +1,40 @@
+<html>
+<body>
+<br>
+<h1>Saldo Kasbon Pegawai Keseluruhan</h1>
+#if (!$saldo || $saldo.isEmpty())
+Tidak Ada Data
+#else
+<table border=1 width=70% class="hovertable">
+<tr>
+	<th>Kode Pegawai</th>
+	<th>Nama Pegawai</th>
+	<th>Last Update</th>
+	<th>Saldo Kasbon</th>
+	<th>Bayar Kasbon</th>
+</tr>
+#foreach($kasbon in $saldo)
+<tr>
+	<td><center>$kasbon.masterPegawai.kodePegawai</center></td>
+	<td>$kasbon.masterPegawai.namaPegawai</td>
+	<td>
+	#if (!$kasbon.tanggal) 
+	<center>--</center>
+	#else 
+	<center>$kasbon.tanggal</center>
+	#end</td>
+	<td align=right>Rp $kasbon.saldoAkhir</td>
+	<td>
+	<center><a href="formBayarKasbon?idPeg=$kasbon.masterPegawai.id">Bayar</a></center>
+	</td>
+</tr>
+#end
+<tr>
+	<td colspan=3><b>Jumlah</b></td>
+	<td align=right><b>Rp $jumlah</b></td>
+	<th>&nbsp;</th>
+</tr>
+</table>
+#end
+</body>
+</html>

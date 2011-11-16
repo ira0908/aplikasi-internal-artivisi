@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC '-//Hibernate/Hibernate Configuration DTD 3.0//EN' 
+'http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd'>
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.hbm2ddl.auto">
+            update
+        </property>
+        <property name="hibernate.show_sql">
+            true
+        </property>
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.MySQLInnoDBDialect
+        </property>
+        <property name="hibernate.format_sql">
+            true
+        </property>
+        
+        <!--Daftar kelas domain yang di mapping-->
+        <mapping class="com.artivisi.aplikasi.internal.entity.MasterPegawai"/>
+        <mapping class="com.artivisi.aplikasi.internal.entity.SaldoKasbon"/>
+        <mapping class="com.artivisi.aplikasi.internal.entity.TrKasbon"/>
+        <mapping class="com.artivisi.aplikasi.internal.entity.MasterUser"/>
+        <mapping class="com.artivisi.aplikasi.internal.entity.MasterGroup"/>
+        <mapping class="com.artivisi.aplikasi.internal.entity.MasterGroupPermission"/>
+        <mapping class="com.artivisi.aplikasi.internal.entity.MasterPermission"/>
+    </session-factory>
+</hibernate-configuration>

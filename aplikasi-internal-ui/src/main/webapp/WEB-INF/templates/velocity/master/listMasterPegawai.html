@@ -1,0 +1,32 @@
+
+<html>
+<body>
+<br>
+<h1>List Pegawai</h1><br><br>
+<a href="formMasterPegawai">Entry Pegawai</a>
+#if(!$daftarPegawai || $daftarPegawai.isEmpty())
+<br><br>Tidak ada Karyawan.
+#else
+<table border=1 width=60%>
+<tr>
+	<th>Kode Pegawai</th>
+	<th>Nama Pegawai</th>
+	<th>Alamat</th>
+	<th>No Telp</th>
+	<th>Action</th>
+</tr>
+#foreach($pegawai in $daftarPegawai)
+<tr>
+	<td><center>$pegawai.kodePegawai</center></td>
+	<td>$pegawai.namaPegawai</td>
+	<td>$pegawai.alamat</td>
+	<td>$pegawai.noTelp</td>
+	<td><center><a href="formMasterPegawai?id=$!pegawai.id">Edit</a></center></td>
+</tr>
+#end
+</table>
+#end
+<br>
+
+</body>
+</html>

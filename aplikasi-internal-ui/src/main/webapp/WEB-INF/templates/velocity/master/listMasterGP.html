@@ -1,0 +1,24 @@
+<html>
+	<body>
+		<h1>Master Group Permission</h1>
+		<br><br><a href="formMasterGP">Tambah Group Permission</a><br>
+		#if (!$gp || $gp.isEmpty())
+		Tidak Ada Group Permission
+		#else
+			<table border=1 width=50%>
+				<tr>
+					<th>Nama Group</th>
+					<th>Nama Permission</th>
+					<th>Action</th>
+				</tr>
+					#foreach($list in $gp)
+					<tr>
+					<td>$list.masterGroup.namaGroup</td>
+					<td>$list.masterPermission.namaPermission</td>
+					<td><center><a href="formMasterGP?id=$list.id">Edit</a> | <a href="hapusGP?id=$list.id">Delete</a></center></td>
+					</tr>
+					#end
+			</table>
+		#end
+	</body>
+</html>

@@ -1,0 +1,35 @@
+
+<html>
+<body>
+<br>
+<h1>List User</h1><br><br>
+<a href="formMasterUser">Entry User</a>
+#if(!$user || $user.isEmpty())
+<br><br>Tidak ada User.
+#else
+<table border=1 width=60%>
+<tr>
+	<th>Nama User</th>
+	<th>Nama Pegawai</th>
+	<th>Group</th>
+	<th>Status</th>
+	<th>Action</th>
+</tr>
+#foreach($lUser in $user)
+<tr>
+	<td>$lUser.namaUser</td>
+	<td>$lUser.masterPegawai.namaPegawai</td>
+	<td>$lUser.masterGroup.namaGroup</td>
+	<td><center>
+	#if ($lUser.enable==true)Aktif 
+	#else Tidak Aktif 
+	#end </center></td>
+	<td><center><a href="formMasterUser?id=$!lUser.id">Edit</a> | <a href="hapusUser?id=$!lUser.id">Delete</a></center></td>
+</tr>
+#end
+</table>
+#end
+<br>
+
+</body>
+</html>

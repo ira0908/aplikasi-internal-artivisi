@@ -1,0 +1,52 @@
+<html>
+<head><title>Bayar Kasbon Pegawai</title>
+<script type="text/javascript">
+
+    jQuery(function(){
+
+        // datepicker
+        var pickerOpts = {
+		//dateFormat: "yy-mm-dd",
+			dateFormat: "mm yy",
+            appendText: "mm yyyy"
+        };
+        jQuery('input[name=tanggal]').datepicker(pickerOpts);
+
+    });
+
+	</script>
+</head>
+<body>
+<h2>Bayar Kasbon Pegawai</h2>
+<form action="" method=POST>
+<table>
+	<tr>
+		<td>Nama Pegawai</td>
+		<td><select name=masterPegawai>
+		<option value=$!dataSaldo.masterPegawai.id>$!dataSaldo.masterPegawai.namaPegawai</option>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Saldo Awal</td>
+		<td><input type="text" name=saldoAwal value=$!dataSaldo.saldoAkhir></td>
+	</tr>
+	<tr>
+		<td>Tanggal</td>
+		<td><input type="text" name=tanggal></td>
+	</tr>
+	<tr>
+		<td>Nilai Bayar</td>
+		<td><input type="text" name=nilai></td>
+	</tr>
+	<tr>
+		<td>Keterangan</td>
+		<td><input type="text" name=ket></td>
+	</tr>
+	<tr>
+		<td><input type="submit" value="Simpan"></td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Master User</title>
+
+</head>
+<body>
+<h2>Master Pegawai</h2>
+<form action="" method=POST>
+<table>
+	<tr>
+		<td>User Name</td>
+		<td><input type="text" name=namaUser value='$!data.namaUser'></td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td><input type="password" name=pass value='$!data.Pass'></td>
+	</tr>
+	<tr>
+		<td>Nama Pegawai</td>
+		<td>
+		<select name=masterPegawai>
+		<option>-Pilih Pegawai-</option>
+		#foreach ($pegawai in $peg)
+			#if($data.masterPegawai.id==$pegawai.id)
+				#set($selected = 'selected=selected')
+			#else
+        		#set($selected = '')
+   	 		#end
+   	 		<option value=$!pegawai.id $!selected>$!pegawai.namaPegawai</option>
+		#end
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Group</td>
+		<td>
+		<select name=masterGroup>
+		<option>-Pilih Group-</option>
+		#foreach ($list in $group)
+			#if($data.masterGroup.id==$list.id)
+				#set($selected = 'selected=selected')
+			#else
+        		#set($selected = '')
+   	 		#end
+   	 		<option value=$!list.id $!selected>$!list.namaGroup</option>
+		#end
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Status</td>
+		#if ($data.enable==true)
+		<td><input type="checkbox" name=enable checked='checked=checked'>Aktif</td>
+		#else
+		<td><input type="checkbox" name=enable>Aktif</td>
+		#end
+	</tr>
+	<tr>
+		<td><input type="submit" value="Simpan"></td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

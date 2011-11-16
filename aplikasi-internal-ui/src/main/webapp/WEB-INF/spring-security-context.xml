@@ -1,0 +1,48 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
+ 
+ 
+ 	<http auto-config="true">
+    	<intercept-url pattern="/app/transaksi/laporanKasbon" access="ROLE_KARYAWAN_VIEW" />
+    	<intercept-url pattern="/app/transaksi/lapKasbon" access="ROLE_KARYAWAN_VIEW" />
+    	<intercept-url pattern="/app/master/*" access="ROLE_KARYAWAN_ALL" />
+    	<intercept-url pattern="/app/transaksi/formBayarKasbon" access="ROLE_KARYAWAN_ALL" />
+    	<intercept-url pattern="/app/transaksi/formKasbon" access="ROLE_KARYAWAN_EDIT" />
+    	<intercept-url pattern="/app/transaksi/saldoKasbon" access="ROLE_KARYAWAN_EDIT" />
+    	<intercept-url pattern="/**" filters="none" />
+    	<form-login login-page="/login.html"/>
+  	</http>
+
+	<authentication-manager>
+    	<authentication-provider>
+      		<user-service>
+        		<user name="test" password="test" authorities="ROLE_KARYAWAN_VIEW" />
+      		</user-service>
+    	</authentication-provider>
+    	<authentication-provider user-service-ref='myUserDetailsService'/>
+  	</authentication-manager>
+
+	<beans:bean id="myUserDetailsService"
+      	class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+    	<beans:property name="dataSource" ref="dataSource"/>
+    	<beans:property name="usersByUsernameQuery"
+    		value="select namaUser, pass, enable as enabled
+    		from masterUser where namaUser=?"
+    	></beans:property>
+    	<beans:property name="authoritiesByUsernameQuery"
+    		value="select u.namaUser, p.namaPermission as authority
+    		from masterUser u inner join masterGroup g on u.group_id=g.id 
+    		inner join masterGroupPermission gp on gp.group_id=g.id 
+    		inner join masterPermission p on gp.permission_id=p.id 
+    		where u.namaUser=?; "
+    	></beans:property>
+    	<beans:property name="rolePrefix" value="ROLE_"></beans:property>
+  	</beans:bean>
+
+
+</beans:beans>

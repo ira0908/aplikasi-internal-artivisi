@@ -1,0 +1,44 @@
+<html>
+<body>
+<h2>Master Group Permission</h2>
+<form action="" method=POST>
+<table>
+	<tr>
+		<td>Nama Group</td>
+		<td>
+		<select name=masterGroup>
+		<option>-Pilih Group-</option>
+		#foreach ($list in $g)
+			#if($data.masterGroup.id==$list.id)
+				#set($selected = 'selected=selected')
+			#else
+        		#set($selected = '')
+   	 		#end
+   	 		<option value=$!list.id $!selected>$!list.namaGroup</option>
+		#end
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Nama Permission</td>
+		<td>
+		<select name=masterPermission>
+		<option>-Pilih Permission-</option>
+		#foreach ($per in $p)
+			#if($data.masterPermission.id==$per.id)
+				#set($selected = 'selected=selected')
+			#else
+        		#set($selected = '')
+   	 		#end
+   	 		<option value=$!per.id $!selected>$!per.namaPermission</option>
+		#end
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td><input type="submit" value="Simpan"></td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

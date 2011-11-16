@@ -1,0 +1,22 @@
+<html>
+	<body>
+		<h1>Master Group</h1>
+		<br><br><a href="formMasterGroup">Tambah Group</a><br>
+		#if (!$group || $group.isEmpty())
+		Tidak Ada Group
+		#else
+			<table border=1 width=50%>
+				<tr>
+					<th>Nama Group</th>
+					<th>Action</th>
+				</tr>
+				#foreach($list in $group)
+				<tr>
+					<td>$list.namaGroup</td>
+					<td><center><a href="formMasterGroup?id=$list.id">Edit</a> | <a href="hapusGroup?id=$list.id">Delete</a></center></td>
+				</tr>
+				#end
+			</table>
+		#end
+	</body>
+</html>

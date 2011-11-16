@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <!-- CHANGE THE NEXT THREE LINES -->
+        <title>Aplikasi Internal ArtiVisi</title>
+        
+        <!-- CHANGE THE ABOVE THREE LINES -->
+        <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <META name="Copyright" content="Allwebco Design Corporation http://allwebcodesign.com/">
+
+        <link rel="StyleSheet" href="${base}/css/common-style.css" type="text/css">
+        <link rel="StyleSheet" href="${base}/css/teal.css" type="text/css">
+        <link rel="StyleSheet" href="${base}/css/teal-menu.css" type="text/css">
+        <link rel="StyleSheet" href="${base}/css/ui.all.css" type="text/css">
+        
+        <link rel="shortcut icon" href="${base}/picts/icon_kecil.png" />
+
+        <script language="JavaScript" type="text/javascript" src="${base}/js/pop-closeup.js"></script>
+        <script language="JavaScript" type="text/javascript" src="${base}/js/jquery.js"></script>
+        <script language="JavaScript" type="text/javascript" src="${base}/js/jquery-ui-personalized-1.5.3.min.js"></script>
+    </head>
+
+    <BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+        <script>
+            jQuery(function(){
+                jQuery.ajax({
+                    url: '${base}/ppob/json/username.json',
+                    method: 'GET',
+                    dataType: 'json',
+                    success: setUsernameLabel
+                });
+                
+                function setUsernameLabel(data){
+                    jQuery('#currentUser').html("User : <b>"+ data.user + "</b><br>");
+                    jQuery('#currentRole').html("Role : <b>"+ data.role + "</b><br>");
+                }
+            });
+        </script>
+        <!-- OUTER PAGE TABLE-->
+        <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td align="center" valign="top">
+                    <script language="JavaScript" type="text/javascript">
+                    var color = "666666" // HEADER BACKGROUND COLOR (EDIT IN THE css FILE)
+                    	var flashheight = "50" // HEIGHT OF THE FLASH (IN PIXELS)
+                    	var flashwidth = "750" // WIDTH OF THE FLASH (IN PIXELS)
+                    	var showdate = "yes" // SHOW THE DATE ON THE PAGE
+                    	var stripes = "yes" // SHOW STRIPE UNDER THE FLASH
+
+                    	// COPYRIGHT 2009 � Allwebco Design Corporation
+                    	// Unauthorized use or sale of this script is strictly prohibited by law
+                    	// YOU DO NOT NEED TO EDIT BELOW THIS LINE
+                    	document.write('<TABLE cellpadding="0" cellspacing="0" border="0" width="100%" BGCOLOR="#'+ color + '"><tr><td align="left" class="headercolor">');
+                    	if (stripes == "yes") {
+                    		document.write('</td></tr><tr class="printhide"><td class="pagebars">');
+                    		document.write('<img src="${base}/picts/spacer.gif" width="10" height="1"><br>');
+                    	}
+
+                    	document.write('</td></tr></table>');
+
+                    	// START DATE SCRIPT
+                    	if (showdate == "yes") {
+                    		document.write('<div id="date-location" class="printhide">');
+                    		var d = new Date()
+                    		var weekday = new Array("Sunday", "Monday", "Tuesday", "Wednesday",
+                    				"Thursday", "Friday", "Saturday")
+                    		var monthname = new Array("January", "February", "March", "April", "May",
+                    				"June", "July", "August", "September", "October", "November",
+                    				"December")
+                    		document.write("<span class=\"date-font\"><nobr>" + weekday[d.getDay()]
+                    				+ " ")
+                    		document.write(monthname[d.getMonth()] + " ")
+                    		document.write(d.getDate() + ". ")
+                    		document.write(d.getFullYear())
+                    		document.write("</nobr><br></span>")
+                    		document.write('</div>');
+                    	}
+                    </script>
+
+                    <!-- PICTURE AND BAR TABLE -->
+                    <table cellpadding="0" cellspacing="0" border="0" width=100%>
+                        <tr>
+                            <td background="${base}/picts/home.jpg" class="pictbackground">
+                                <img src="${base}/picts/home.jpg" border="0" width="1270" height="125" alt="Image"><br>
+                            </td>
+                         </tr>
+                         <tr class="printhide"><td class="pagebars">
+                                <img src="${base}/picts/spacer.gif" width="10" height="1" alt="image"><br>
+                         </td></tr>
+                     </table>
+                    <!-- END PICTURE TABLE -->
+
+					<!-- menu -->
+                    <script language="JavaScript" type="text/javascript">
+						var menuside		= "left"	// MENU SIDE | left | right | center
+                    	var fixwrap		= "no"		// MAKE yes ONLY IF MENUS ARE WRAPPING
+                    	var menuwidth		= "900"		// TOTAL MENU WIDTH TO FIX WRAP
+
+                    	document.write('<table cellpadding="0" cellspacing="0" border="0" class="menutable"><tr><td class="printhide" align="'+menuside+'">');
+                    	document.write('<table cellpadding="0" cellspacing="0" border="0"><tr><td>');
+                    	document.write('<ul id="menunav">');
+
+                    	// START MENU LINKS - EDIT BELOW THIS AREA
+                        document.write('<li style="width: 90px;"><a href="${base}/login.html">Home</a></li>');
+                        document.write('  <li style="width: 90px;"><a href="">Master</a>'); 
+                        document.write('    <ul>');
+                        document.write('      <li><a href="${base}/app/master/listMasterPegawai">Master Pegawai</a></li>');
+                        document.write('      <li><a href="${base}/app/master/listMasterUser">Master User</a></li>');
+                        document.write('      <li><a href="${base}/app/master/listMasterGroup">Master Group</a></li>');
+                        document.write('      <li><a href="${base}/app/master/listMasterPermission">Master Permission</a></li>');
+                        document.write('      <li><a href="${base}/app/master/listMasterGP">Master Group Permission</a></li>');
+                        document.write('    </ul>');
+                        document.write('  </li>');
+
+                        document.write('  <li style="width: 95px;"><a href="">Kasbon</a>'); 
+                        document.write('    <ul>');
+                        document.write('      <li><a href="${base}/app/transaksi/formKasbon">Entry Kasbon</a></li>');
+                        document.write('      <li><a href="${base}/app/transaksi/saldoKasbon">Saldo Kasbon</a></li>');
+                        document.write('      <li><a href="${base}/app/transaksi/laporanKasbon">Laporan Kasbon</a></li>');
+                        document.write('    </ul>');
+                        document.write('  </li>');
+                        
+                        document.write('  <li style="width: 95px;"><a href="${base}/j_spring_security_logout">Logout</a>'); 
+                        document.write('  </li>');
+
+                    	// END LINKS //
+
+                    	document.write('</ul>');
+                    	document.write('</td></tr></table>');
+                    	   if (fixwrap == "yes") {
+                    		   document.write('<img src="${base}/picts/spacer.gif" width="'+menuwidth+'" height="1"><br>');
+                    	   }
+                    	document.write('</td></tr></table>');
+                    </script>
+
+                    <!-- SPLIT TABLE-->
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
+                            <td align="left" valign="top" class="sidebar-background">
+
+                                <!-- LEFT SIDEBAR AREA-->
+                                <table cellpadding="0" cellspacing="0" border="0" width="20%" height="10%" class="sidebarboxwidth">
+								<tr>
+									<td align="left" class="sidebartitle sidebartitle-box">User Info<br> </td>
+								</tr>
+								<tr> <td class="sidebartext sidebartext-box">
+									<span id="currentUser">User : undefined</span>
+									<span id="currentRole">Role : undefined</span>
+									<br>
+									<b><font color="red">
+									<a href="${base}/ppob/security/user/password">Change Password</a>
+									</font></b>
+									</td>
+								</tr>
+								
+								</table>
+                            </td>
+                            
+                            <td align="left" valign="top" width="40" class="pageheight">
+                                <div id="cornerimage">
+                                    <img src="${base}/picts/spacer.gif" height="40" width="40" alt="image"><br>
+                                </div>
+
+                                <img src="${base}/picts/spacer.gif" height="200" width="10" border="0" alt="image"><br>
+                            </td>
+                            <td align="center" valign="top" class="shadow-horizontal">
+                                <br><br>
+                                
+                                <!-- START CONTENT TABLE -->
+                                <table cellpadding="5" cellspacing="0" border="0" width="100%">
+                                    <tr>
+                                        <td align="left" valign="top" class="just">
+                                            ${body}
+                                        </td>
+                                        
+                                        <!-- RIGHT SIDEBAR AREA -->
+                                        <!--
+                                        <td align="center" valign="top" width="5">
+                                            <img src="picts/spacer.gif" width="5" height="5" alt="image"><br>
+                                        </td>
+                                        <td align="center" valign="top" class="sidebarright-width">
+                                            <script language="JavaScript" type="text/javascript" src="js/sidebar-right.js"></script>
+                                        </td> 
+                                        -->
+                                        </tr>
+                                </table>
+
+                                <!-- CONTENT TABLE -->
+                            </td></tr></table>
+                    <!-- SPLIT TABLE -->
+
+                    <!-- PAGE TABLE -->
+                </td></tr><tr><td>
+                
+                    <!-- BOTTOM PAGEBAR -->
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr class="printhide"><td class="pagebar-bottom">
+                                <img src="${base}/picts/spacer.gif" width="10" height="1" alt="image"><br>
+                            </td></tr>
+                    </table>
+                    
+                    <!-- PAGE TABLE -->
+                </td></tr><tr><td class="shadow-horizontal">
+                    <!-- COPYRIGHT -->
+                    <table cellpadding="6" cellspacing="0" border="0" width="100%"><tr><td align="left" valign="top">
+                                <script language="JavaScript" type="text/javascript" src="${base}/js/copyright.js"></script>
+                            </td><td align="right" valign="top">
+                                <script language="JavaScript" type="text/javascript" src="${base}/js/copyright-allwebco.js"></script>
+                            </td></tr>
+                    </table>
+                    <!-- COPYRIGHT -->
+                </td></tr>
+        </table>
+        <!-- END OUTER PAGE TABLE -->
+    </BODY>
+</HTML>
