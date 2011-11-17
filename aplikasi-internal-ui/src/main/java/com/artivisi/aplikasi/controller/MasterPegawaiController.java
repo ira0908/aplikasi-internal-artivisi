@@ -52,6 +52,7 @@ public class MasterPegawaiController {
 	
 	@RequestMapping(value="/formMasterPegawai", method=RequestMethod.GET)
 	public ModelMap displayForm(@RequestParam(value="id", required=false) Long id){
+		
 		ModelMap mm = new ModelMap();
 		MasterPegawai mp=appService.findById(id);
 		if (mp!=null){
@@ -61,9 +62,9 @@ public class MasterPegawaiController {
 	}
 	
 	@RequestMapping(value="/formMasterPegawai", method=RequestMethod.POST)
-	public String process(@Valid MasterPegawai pegawai, BindingResult br) {
+	public String process(@ModelAttribute ("masterPegawai") @Valid MasterPegawai pegawai, BindingResult br) {
 		if (br.hasErrors()){
-			return "redirect:formMasterPegawai";
+			return "/master/formMasterPegawai";
 		}
             appService.savePegawai(pegawai);
             SaldoKasbon sk = saldoService.findByPegawai(pegawai);

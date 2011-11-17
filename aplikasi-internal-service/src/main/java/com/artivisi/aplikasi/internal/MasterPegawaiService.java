@@ -10,6 +10,7 @@ public interface MasterPegawaiService {
 	public void savePegawai(MasterPegawai pegawai);
 	public List<MasterPegawai> semuaPegawai();
 	public MasterPegawai findById(Long id);
+	public List<MasterPegawai> findByUser(Long id);
 	
 }
 

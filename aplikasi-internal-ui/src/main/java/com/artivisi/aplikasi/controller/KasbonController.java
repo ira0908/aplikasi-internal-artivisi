@@ -3,11 +3,14 @@ package com.artivisi.aplikasi.controller;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.velocity.runtime.directive.Foreach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
@@ -16,11 +19,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.artivisi.aplikasi.internal.MasterGroupService;
 import com.artivisi.aplikasi.internal.MasterPegawaiService;
+import com.artivisi.aplikasi.internal.MasterUserService;
 import com.artivisi.aplikasi.internal.SaldoKasbonService;
 import com.artivisi.aplikasi.internal.TransaksiKasbonService;
+import com.artivisi.aplikasi.internal.entity.MasterGroup;
 import com.artivisi.aplikasi.internal.entity.MasterPegawai;
+import com.artivisi.aplikasi.internal.entity.MasterUser;
 import com.artivisi.aplikasi.internal.entity.SaldoKasbon;
 import com.artivisi.aplikasi.internal.entity.TrKasbon;
 
@@ -35,6 +43,12 @@ public class KasbonController {
 	
 	@Autowired
 	private SaldoKasbonService saldoKasbonService;
+	
+	@Autowired
+	private MasterUserService userService;
+	
+	@Autowired
+	private MasterGroupService groupService;
 	
 	//@Autowired
 	//private BayarKasbonService bayarKasbon;
@@ -109,7 +123,20 @@ public class KasbonController {
 	
 	@RequestMapping(value="/transaksi/laporanKasbon", method=RequestMethod.GET)
 	public ModelMap formLapKasbon(){
-		return new ModelMap().addAttribute("daftarPegawai", pegawaiService.semuaPegawai());
+		MasterUser mu=userService.findByUsername(SecurityHelper.getCurrentUsername());
+		Long id=new Long(2);
+		MasterGroup mg=groupService.findById(id);
+		if (mu.getMasterGroup().getId()!=mg.getId()){
+			ModelMap mm=new ModelMap();
+			List<MasterPegawai> a=pegawaiService.findByUser(mu.getMasterPegawai().getId());
+			mm.addAttribute("daftarPegawai", a);
+			return mm;
+		}else{
+			ModelMap mm=new ModelMap();
+			List<MasterPegawai> a=pegawaiService.semuaPegawai();
+			mm.addAttribute("daftarPegawai", a);
+			return mm;
+		}
 	}
 	
 	@RequestMapping(value="/transaksi/lapKasbon", method=RequestMethod.POST)
@@ -136,4 +163,16 @@ public class KasbonController {
 		mm.addAttribute("header",saldoKasbonService.findByPegawai(masterPegawai));
 		return mm;
 	}
+	
+	@RequestMapping("/transaksi/currentUsername")
+	@ResponseBody
+	public Map<String, Object> infoUser(){
+
+		Map<String, Object> info = new HashMap<String, Object>();
+		info.put("user", SecurityHelper.getCurrentUsername());
+		info.put("role", userService.findByUsername(SecurityHelper.getCurrentUsername()).getMasterGroup().getNamaGroup());
+		
+		return info;
+	}
+	
 }

@@ -10,5 +10,6 @@ public interface MasterUserService {
 	public List<MasterUser> findAllUser();
 	public MasterUser findById(Long id);
 	public void deleteUser(MasterUser mu);
+	public MasterUser findByUsername(String user);
 	
 }

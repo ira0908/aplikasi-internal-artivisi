@@ -14,8 +14,10 @@
     	<intercept-url pattern="/app/transaksi/formBayarKasbon" access="ROLE_KARYAWAN_ALL" />
     	<intercept-url pattern="/app/transaksi/formKasbon" access="ROLE_KARYAWAN_EDIT" />
     	<intercept-url pattern="/app/transaksi/saldoKasbon" access="ROLE_KARYAWAN_EDIT" />
+    	<intercept-url pattern="/index.html" access="ROLE_KARYAWAN_VIEW" />
+    	<intercept-url pattern="/app/transaksi/currentUsername" access="ROLE_KARYAWAN_VIEW" />
     	<intercept-url pattern="/**" filters="none" />
-    	<form-login login-page="/login.html"/>
+    	<form-login login-page="/login.html" default-target-url="/index.html"/>
   	</http>
 
 	<authentication-manager>

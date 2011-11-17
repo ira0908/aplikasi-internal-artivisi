@@ -41,4 +41,12 @@ public class MasterUserServiceImpl implements MasterUserService{
 		sessionFactory.getCurrentSession().delete(mu);
 	}
 	
+	@Override
+	public MasterUser findByUsername(String user){
+		return (MasterUser) sessionFactory.getCurrentSession()
+				.createQuery("from MasterUser where namaUser = :user")
+				.setParameter("user", user)
+				.uniqueResult();
+	}
+	
 }

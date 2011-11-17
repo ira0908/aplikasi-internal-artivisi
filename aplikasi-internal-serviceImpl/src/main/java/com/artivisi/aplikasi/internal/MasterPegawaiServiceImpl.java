@@ -35,4 +35,12 @@ public class MasterPegawaiServiceImpl implements MasterPegawaiService{
 				.createQuery("from MasterPegawai where id =:id")
 				.setParameter("id", id).uniqueResult();
 	}
+	
+	@Override
+	public List<MasterPegawai> findByUser(Long id){
+		return sessionFactory.getCurrentSession()
+				.createQuery("from MasterPegawai where id =:id")
+				.setParameter("id", id)
+				.list();
+	}
 }

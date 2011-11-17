@@ -23,19 +23,15 @@ public class MasterPegawai {
 	@GeneratedValue
 	private Long id;
 	
-	@NotNull @NotEmpty
 	@Column(name="kodePegawai")
 	private String kodePegawai;
 	
-	@NotNull @NotEmpty
 	@Column(name="namaPegawai")
 	private String namaPegawai;
 	
-	@NotNull @NotEmpty
 	@Column(name="alamat")
 	private String alamat;
 	
-	@NotNull @NotEmpty
 	@Column(name="noTelp")
 	private String noTelp;
 

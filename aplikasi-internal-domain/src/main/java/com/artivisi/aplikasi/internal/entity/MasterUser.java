@@ -20,11 +20,9 @@ public class MasterUser {
 	@GeneratedValue
 	private Long id;
 	
-	@NotNull @NotEmpty
 	@Column(name="namaUser")
 	private String namaUser;
 	
-	@NotNull @NotEmpty
 	@Column(name="pass")
 	private String pass;
 	

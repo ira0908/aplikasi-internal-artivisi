@@ -34,12 +34,10 @@ public class TrKasbon {
 	@JoinColumn(name="pegawai_id", nullable=false)
 	private MasterPegawai masterPegawai;
 	
-	@NotNull @NotEmpty
 	@Column(name="tanggal")
 	@Temporal(TemporalType.DATE)
 	private Date tanggal;
 	
-	@NotNull @NotEmpty
 	@Column(name="ket")
 	private String ket;
 	
