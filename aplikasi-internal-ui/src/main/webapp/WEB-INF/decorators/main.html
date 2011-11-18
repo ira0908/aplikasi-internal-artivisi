@@ -25,15 +25,15 @@
         <script>
             jQuery(function(){
                 jQuery.ajax({
-                    url: '${base}/app/transaksi/currentUsername',
+                    url: '${base}/app/transaksi/userservice.json',
                     method: 'GET',
                     dataType: 'json',
                     success: setUsernameLabel
                 });
                 
-                function setUsernameLabel(user){
-                    jQuery('#currentUser').html("User : <b>"+ user.user + "</b>");
-                    jQuery('#currentRole').html("Role : <b>"+ user.role + "</b>");
+                function setUsernameLabel(data){
+                    jQuery('#currentUser').html("User : <b>"+ data.user + "</b>");
+                    jQuery('#currentRole').html("Role : <b>"+ data.role + "</b>");
                 }
             });
         </script>
@@ -144,8 +144,8 @@
 									<td align="left" class="sidebartitle sidebartitle-box">User Info<br> </td>
 								</tr>
 								<tr> <td class="sidebartext sidebartext-box">
-									<span id="currentUser">User : undefined</span><br>
-									<span id="currentRole">Role : undefined</span>
+									<span id="currentUser">User : </span><br>
+									<span id="currentRole">Role : </span>
 									<br>
 									<b><font color="red">
 									</font></b>

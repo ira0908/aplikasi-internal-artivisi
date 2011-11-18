@@ -23,7 +23,7 @@ Tidak Ada Data
 	#else 
 	<center>$kasbon.tanggal</center>
 	#end</td>
-	<td align=right>Rp $kasbon.saldoAkhir</td>
+	<td align=right>Rp $!numberTool.format('#,##0',$kasbon.saldoAkhir)</td>
 	<td>
 	<center><a href="formBayarKasbon?idPeg=$kasbon.masterPegawai.id">Bayar</a></center>
 	</td>
@@ -31,7 +31,7 @@ Tidak Ada Data
 #end
 <tr>
 	<td colspan=3><b>Jumlah</b></td>
-	<td align=right><b>Rp $jumlah</b></td>
+	<td align=right><b>Rp $!numberTool.format('#,##0',$jumlah)</b></td>
 	<th>&nbsp;</th>
 </tr>
 </table>

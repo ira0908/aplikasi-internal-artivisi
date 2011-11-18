@@ -164,14 +164,12 @@ public class KasbonController {
 		return mm;
 	}
 	
-	@RequestMapping("/transaksi/currentUsername")
-	@ResponseBody
-	public Map<String, Object> infoUser(){
+	@RequestMapping("/transaksi/.json")
+	public @ResponseBody Map<String, Object> infoUser(){
 
 		Map<String, Object> info = new HashMap<String, Object>();
 		info.put("user", SecurityHelper.getCurrentUsername());
 		info.put("role", userService.findByUsername(SecurityHelper.getCurrentUsername()).getMasterGroup().getNamaGroup());
-		
 		return info;
 	}
 	

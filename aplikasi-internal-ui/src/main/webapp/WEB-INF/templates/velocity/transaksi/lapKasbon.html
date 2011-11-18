@@ -15,11 +15,11 @@
 </tr>
 <tr>
 	<td>Saldo Awal</td>
-	<td>: <b>Rp $!saldoAwal.saldoAwal</b></td>
+	<td>: <b>Rp $!numberTool.format('#,##0',$!saldoAwal.saldoAwal)</b></td>
 </tr>
 <tr>
 	<td>Saldo Akhir</td>
-	<td>: <b>Rp $header.saldoAkhir</b></td>
+	<td>: <b>Rp $!numberTool.format('#,##0',$header.saldoAkhir)</b></td>
 </tr>
 </table>
 <br>
@@ -37,19 +37,19 @@
 			<td><center>$list.tanggal</center></td>
 			<td>$list.ket</td>
 			#if ($list.type=='kasbon')
-			<td align=right>Rp $list.nilai</td>
+			<td align=right>Rp $!numberTool.format('#,##0',$list.nilai)</td>
 			<td>&nbsp</td>
 			#else
 			<td>&nbsp</td>
-			<td align=right>Rp $list.nilai</td>
+			<td align=right>Rp $!numberTool.format('#,##0',$list.nilai)</td>
 			#end
-			<td align=right>Rp $list.saldoAkhir</td>
+			<td align=right>Rp $!numberTool.format('#,##0',$list.saldoAkhir)</td>
 		</tr>
 		#end
 		<tr>
 			<td colspan=2><b>Jumlah</b></td>
-			<td align=right><b>Rp $jumlahKasbon</b></td>
-			<td align=right><b>Rp $jumlahBayar</b></td>
+			<td align=right><b>Rp $!numberTool.format('#,##0',$jumlahKasbon)</b></td>
+			<td align=right><b>Rp $!numberTool.format('#,##0',$jumlahBayar)</b></td>
 			<td>&nbsp</td>
 		</tr>
 	</table>
