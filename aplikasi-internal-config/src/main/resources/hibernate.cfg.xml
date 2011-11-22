@@ -25,5 +25,7 @@
         <mapping class="com.artivisi.aplikasi.internal.entity.MasterGroup"/>
         <mapping class="com.artivisi.aplikasi.internal.entity.MasterGroupPermission"/>
         <mapping class="com.artivisi.aplikasi.internal.entity.MasterPermission"/>
+        <mapping class="com.artivisi.aplikasi.internal.entity.MasterPlafon"/>
+        <mapping class="com.artivisi.aplikasi.internal.entity.MasterTypeReimburse"/>
     </session-factory>
 </hibernate-configuration>

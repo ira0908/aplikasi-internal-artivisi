@@ -164,13 +164,34 @@ public class KasbonController {
 		return mm;
 	}
 	
-	@RequestMapping("/transaksi/.json")
+	@RequestMapping("/transaksi/userservice.json")
 	public @ResponseBody Map<String, Object> infoUser(){
 
 		Map<String, Object> info = new HashMap<String, Object>();
 		info.put("user", SecurityHelper.getCurrentUsername());
 		info.put("role", userService.findByUsername(SecurityHelper.getCurrentUsername()).getMasterGroup().getNamaGroup());
 		return info;
+	}
+	
+	@RequestMapping(value="/transaksi/gantiPass", method=RequestMethod.GET)
+	public ModelMap gantiPass(){
+		ModelMap mm = new ModelMap();
+		//mm.addAttribute("data", userService.findByUsername(SecurityHelper.getCurrentUsername()));
+		return mm;
+	}
+	
+	@RequestMapping(value="/transaksi/gantiPass", method=RequestMethod.POST)
+	public String prosesGantiPass(){
+		MasterUser user=userService.findByUsername(SecurityHelper.getCurrentUsername());
+			MasterUser mu = new MasterUser();
+			mu.setEnable(user.getEnable());
+			mu.setMasterGroup(user.getMasterGroup());
+			mu.setMasterPegawai(user.getMasterPegawai());
+			mu.setNamaUser(user.getNamaUser());
+			mu.setId(user.getId());
+			mu.setPass("123");
+			userService.saveUser(mu);
+			return "redirect:/index.html";
 	}
 	
 }
