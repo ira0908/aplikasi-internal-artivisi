@@ -3,4 +3,7 @@
     <decorator name="default" page="main.html">
         <pattern>/*</pattern>
     </decorator>
+    <excludes>
+        <pattern>/login.html</pattern>
+    </excludes>
 </decorators>
