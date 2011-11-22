@@ -1,0 +1,26 @@
+<html>
+	<body>
+		<h1>Master Plafon</h1>
+		<br><br><a href="formMasterPlafon">Tambah Plafon</a><br>
+		#if (!$plafon || $plafon.isEmpty())
+		Tidak Ada plafon
+		#else
+			<table border=1 width=50%>
+				<tr>
+					<th>Nama Pegawai</th>
+					<th>Plafon</th>
+					<th>Tahun</th>
+					<th>Action</th>
+				</tr>
+				#foreach($list in $plafon)
+				<tr>
+					<td>$list.masterPegawai.namaPegawai</td>
+					<td align=right>Rp $!numberTool.format('#,##0',$list.plafon)</td>
+					<td><center>$list.tahun</center></td>
+					<td><center><a href="formMasterPlafon?id=$list.id">Edit</a> | <a href="hapusPlafon?id=$list.id">Delete</a></center></td>
+				</tr>
+				#end
+			</table>
+		#end
+	</body>
+</html>

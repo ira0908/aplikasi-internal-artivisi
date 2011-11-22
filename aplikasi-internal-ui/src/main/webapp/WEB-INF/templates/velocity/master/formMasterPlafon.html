@@ -1,0 +1,37 @@
+<html>
+	<body>
+		<h1>Master Plafon</h1>
+		<form method="POST">
+			<table>
+				<tr>
+					<td>Nama Pegawai</td>
+					<td>
+					<select name=masterPegawai>
+					<option>-Pilih Pegawai-</option>
+					#foreach ($pegawai in $peg)
+						#if($data.masterPegawai.id==$pegawai.id)
+							#set($selected = 'selected=selected')
+						#else
+			        		#set($selected = '')
+			   	 		#end
+			   	 		<option value=$!pegawai.id $!selected>$!pegawai.namaPegawai</option>
+					#end
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Nilai Plafon</td>
+					<td><input type=text name=plafon value='$!data.plafon'>'</td>
+				</tr>
+				<tr>
+					<td>Tahun</td>
+					<td><input type=text name=tahun value='$!data.tahun'></td>
+				</tr>
+				<tr>
+					<td>&nbsp</td>
+					<td><input type="submit" value="Simpan"></td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
