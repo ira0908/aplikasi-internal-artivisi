@@ -121,12 +121,10 @@ public class KasbonController {
 		return mm;
 	}
 	
-	@RequestMapping(value="/transaksi/laporanKasbon", method=RequestMethod.GET)
+	@RequestMapping(value="/laporan/laporanKasbon", method=RequestMethod.GET)
 	public ModelMap formLapKasbon(){
 		MasterUser mu=userService.findByUsername(SecurityHelper.getCurrentUsername());
-		Long id=new Long(2);
-		MasterGroup mg=groupService.findById(id);
-		if (mu.getMasterGroup().getId()!=mg.getId()){
+		if (!mu.getMasterGroup().getNamaGroup().equals("ADMINISTRATOR")){
 			ModelMap mm=new ModelMap();
 			List<MasterPegawai> a=pegawaiService.findByUser(mu.getMasterPegawai().getId());
 			mm.addAttribute("daftarPegawai", a);
@@ -139,7 +137,7 @@ public class KasbonController {
 		}
 	}
 	
-	@RequestMapping(value="/transaksi/lapKasbon", method=RequestMethod.POST)
+	@RequestMapping(value="/laporan/lapKasbon", method=RequestMethod.POST)
 	public ModelMap lapKasbonPerPegawai(@RequestParam MasterPegawai masterPegawai, Date mulai, Date sampai){
 		ModelMap mm = new ModelMap();
 		List<TrKasbon> kasbon=kasbonService.findAllKasbonByPegawai(masterPegawai, mulai, sampai);
@@ -181,17 +179,14 @@ public class KasbonController {
 	}
 	
 	@RequestMapping(value="/transaksi/gantiPass", method=RequestMethod.POST)
-	public String prosesGantiPass(){
-		MasterUser user=userService.findByUsername(SecurityHelper.getCurrentUsername());
-			MasterUser mu = new MasterUser();
-			mu.setEnable(user.getEnable());
-			mu.setMasterGroup(user.getMasterGroup());
-			mu.setMasterPegawai(user.getMasterPegawai());
-			mu.setNamaUser(user.getNamaUser());
-			mu.setId(user.getId());
-			mu.setPass("123");
+	public String prosesGantiPass(@RequestParam String pass, String lama){
+		MasterUser mu=userService.findByUsername(SecurityHelper.getCurrentUsername());
+		if (mu.getPass().equals(lama)){
+			mu.setPass(pass);
 			userService.saveUser(mu);
 			return "redirect:/index.html";
+		}
+		return "redirect:gantiPass";
 	}
 	
 }

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-        <head>
+    <head>
         <!-- CHANGE THE NEXT THREE LINES -->
         <title>Aplikasi Internal ArtiVisi</title>
         
@@ -9,12 +9,12 @@
         <META name="Copyright" content="Allwebco Design Corporation http://allwebcodesign.com/">
 
         <link rel="StyleSheet" href="${base}/css/common-style.css" type="text/css">
+        
         <link rel="StyleSheet" href="${base}/css/teal.css" type="text/css">
         <link rel="StyleSheet" href="${base}/css/teal-menu.css" type="text/css">
         <link rel="StyleSheet" href="${base}/css/ui.all.css" type="text/css">
         <link type="text/css" href="${base}/css/ui-lightness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
         <link rel="shortcut icon" href="${base}/picts/favicon.ico" />
- 		<link rel="stylesheet" href="${base}/jsDatePick_ltr.min.css" type="text/css" media="all" />        
 
         <script language="JavaScript" type="text/javascript" src="${base}/js/pop-closeup.js"></script>
         
@@ -27,15 +27,15 @@
         <script>
             jQuery(function(){
                 jQuery.ajax({
-                    url: '${base}/app/transaksi/currentUsername',
+                    url: '${base}/app/transaksi/userservice.json',
                     method: 'GET',
                     dataType: 'json',
                     success: setUsernameLabel
                 });
                 
-                function setUsernameLabel(user){
-                    jQuery('#currentUser').html("User : <b>"+ user.user + "</b>");
-                    jQuery('#currentRole').html("Role : <b>"+ user.role + "</b>");
+                function setUsernameLabel(data){
+                    jQuery('#currentUser').html("User : <b>"+ data.user + "</b>");
+                    jQuery('#currentRole').html("Role : <b>"+ data.role + "</b>");
                 }
             });
         </script>
@@ -107,6 +107,8 @@
                         document.write('      <li><a href="${base}/app/master/listMasterGroup">Master Group</a></li>');
                         document.write('      <li><a href="${base}/app/master/listMasterPermission">Master Permission</a></li>');
                         document.write('      <li><a href="${base}/app/master/listMasterGP">Master Group Permission</a></li>');
+                        document.write('      <li><a href="${base}/app/master/listMasterPlafon">Master Plafon</a></li>');
+                        document.write('      <li><a href="${base}/app/master/listMasterTypeReimburse">Master Type Reimburse</a></li>');
                         document.write('    </ul>');
                         document.write('  </li>');
 
@@ -116,10 +118,19 @@
                         document.write('      <li><a href="${base}/app/transaksi/saldoKasbon">Saldo Kasbon</a></li>');
                         document.write('    </ul>');
                         document.write('  </li>');
+
+                        document.write('  <li style="width: 95px;"><a href="">Reimburse</a>'); 
+                        document.write('    <ul>');
+                        document.write('      <li><a href="${base}/app/transaksi/formReimburseDokter">Entry Reimburse Dokter</a></li>');
+                        document.write('      <li><a href="${base}/app/transaksi/appReimburse">Approve Reimburse Dokter</a></li>');
+                        document.write('    </ul>');
+                        document.write('  </li>');
                         
+                                              
                         document.write('  <li style="width: 95px;"><a href="">Laporan</a>'); 
                         document.write('    <ul>');
-                        document.write('      <li><a href="${base}/app/transaksi/laporanKasbon">Laporan Kasbon</a></li>');
+                        document.write('      <li><a href="${base}/app/laporan/laporanKasbon">Laporan Kasbon</a></li>');
+                        document.write('      <li><a href="${base}/app/laporan/listReimburseDokter">View Reimburse Dokter</a></li>');
                         document.write('    </ul>');
                         document.write('  </li>');
                         
@@ -146,9 +157,10 @@
 									<td align="left" class="sidebartitle sidebartitle-box">User Info<br> </td>
 								</tr>
 								<tr> <td class="sidebartext sidebartext-box">
-									<span id="currentUser">User : undefined</span><br>
-									<span id="currentRole">Role : undefined</span>
+									<span id="currentUser">User : </span><br>
+									<span id="currentRole">Role : </span>
 									<br>
+									<a href="${base}/app/transaksi/gantiPass">Ganti Password</a>
 									<b><font color="red">
 									</font></b>
 									</td>
@@ -171,7 +183,7 @@
                                 <table cellpadding="5" cellspacing="0" border="0" width="100%">
                                     <tr>
                                         <td align="left" valign="top" class="just">
-                                             Maaf Anda tidak punya akses ke menu ini
+                                            Maaf anda tidak punya akses
                                         </td>
                                         
                                         <!-- RIGHT SIDEBAR AREA -->

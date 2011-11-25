@@ -1,0 +1,22 @@
+<html>
+	<body>
+		<h1>Master Type Reimburse</h1>
+		<br><br><a href="formMasterTypeReimburse">Tambah Type Reimburse</a><br>
+		#if (!$data || $data.isEmpty())
+		Tidak Ada Type Reimburse
+		#else
+			<table border=1 width=50%>
+				<tr>
+					<th>Type Reimburse</th>
+					<th>Action</th>
+				</tr>
+				#foreach($list in $data)
+				<tr>
+					<td>$list.typeReimburse</td>
+					<td><center><a href="formMasterTypeReimburse?id=$list.id">Edit</a> | <a href="hapusType?id=$list.id">Delete</a></center></td>
+				</tr>
+				#end
+			</table>
+		#end
+	</body>
+</html>

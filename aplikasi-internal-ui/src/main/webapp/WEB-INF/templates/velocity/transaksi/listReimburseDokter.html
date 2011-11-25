@@ -1,0 +1,58 @@
+#if (!$header || $header.isEmpty())
+Belum Ada Plafon
+#else
+		<h3>Reimburse Dokter</h3>
+		<br>
+		<table>
+			<tr>
+				<td>Kode Pegawai</td>
+				<td>: <b>$header.masterPegawai.kodePegawai</b></td>
+			</tr>
+			<tr>
+				<td>Nama Pegawai</td>
+				<td>: <b>$header.masterPegawai.namaPegawai</b></td>
+			</tr>
+			<tr>
+				<td>Tahun</td>
+				<td>: $header.tahun</td>
+			</tr>
+			<tr>
+				<td>Plafon</td>
+				<td>: <b>$!numberTool.format('#,##0',$header.plafon)</b></td>
+			</tr>
+			<tr>
+				<td>Terpakai</td>
+				<td>: <b>$!numberTool.format('#,##0',$header.terpakai)</b></td>
+			</tr>
+		</table><br><br>
+		#if ($header.plafon==$header.terpakai)
+		Pengajuan Reimburse Dokter
+		#else
+		<a href=formReimburseDokter>Pengajuan Reimburse Dokter</a><br>
+		#end
+		
+			#if (!$data || $data.isEmpty())
+			Tidak ada data
+			#else
+				<table border=1 width=90%>
+					<tr>
+						<th>Tanggal</th>
+						<th>Pegawai</th>
+						<th>Nilai Reimburse</th>
+						<th>Keterangan</th>
+						<th>Status</th>
+						<th>Dibayar</th>
+					</tr>
+					#foreach ($list in $data)
+					<tr>
+						<td>$!list.tanggal</td>
+						<td>$!list.masterPegawai.namaPegawai</td>
+						<td align=right>Rp $!numberTool.format('#,##0',$!list.nilai)</td>
+						<td>$!list.ket</td>
+						<td><center>$!list.approve</center></td>
+						<td align=right>Rp $!numberTool.format('#,##0',$!list.diBayar)</td>
+					</tr>
+					#end
+				</table>
+			#end
+#end

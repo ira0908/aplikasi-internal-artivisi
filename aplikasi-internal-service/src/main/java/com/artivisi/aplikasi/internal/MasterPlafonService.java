@@ -1,5 +1,6 @@
 package com.artivisi.aplikasi.internal;
 
+import java.util.Date;
 import java.util.List;
 
 import com.artivisi.aplikasi.internal.entity.MasterPegawai;
@@ -12,4 +13,5 @@ public interface MasterPlafonService {
 	public MasterPlafon findById(Long id);
 	public MasterPlafon findByPegawai(MasterPegawai masterPegawai);
 	public void hapusPlafon(MasterPlafon plafon);
+	public MasterPlafon findByTahunDanPeg(MasterPegawai masterPegawai, Date tanggal);
 }

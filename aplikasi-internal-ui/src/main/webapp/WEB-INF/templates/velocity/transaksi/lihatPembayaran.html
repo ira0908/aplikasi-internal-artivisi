@@ -1,0 +1,54 @@
+#if (!$header || $header.isEmpty())
+Belum Ada Plafon
+#else
+		<h3>Lihat Pembayaran</h3>
+		<br>
+		<table>
+			<tr>
+				<td>Kode Pegawai</td>
+				<td>: <b>$header.masterPegawai.kodePegawai</b></td>
+			</tr>
+			<tr>
+				<td>Nama Pegawai</td>
+				<td>: <b>$header.masterPegawai.namaPegawai</b></td>
+			</tr>
+			<tr>
+				<td>Tanggal Pengajuan</td>
+				<td>: $header.tanggal</td>
+			</tr>
+			<tr>
+				<td>Nilai Pengajuan</td>
+				<td>: <b>$!numberTool.format('#,##0',$header.nilai)</b></td>
+			</tr>
+			<tr>
+				<td>Sudah dibayar</td>
+				<td>: <b>$!numberTool.format('#,##0',$header.diBayar)</b></td>
+			</tr>
+			<tr>
+				<td>Sisa</td>
+				<td>: <b>$!numberTool.format('#,##0',$sisa)</b></td>
+			</tr>
+		</table><br><br>
+		#if ($header.nilai!=$header.diBayar)
+		<a href=formBayar?id=$!header.id>Pencairan Reimburse</a><br>
+		#end
+		
+			#if (!$data || $data.isEmpty())
+			Tidak ada data
+			#else
+				<table border=1 width=70%>
+					<tr>
+						<th>Tanggal</th>
+						<th>Nilai</th>
+						<th>Keterangan</th>
+					</tr>
+					#foreach ($list in $data)
+					<tr>
+						<td>$!list.tanggal</td>
+						<td align=right>Rp $!numberTool.format('#,##0',$!list.nilai)</td>
+						<td>$!list.ket</td>
+					</tr>
+					#end
+				</table>
+			#end
+#end

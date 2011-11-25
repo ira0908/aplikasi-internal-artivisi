@@ -1,0 +1,30 @@
+#if (!$data || $data.isEmpty())
+Tidak ada data
+#else
+		<h3>List Reimburse Dokter</h3>
+		<br>
+		<table border=1 width=90%>
+			<tr>
+				<th>Tanggal</th>
+				<th>Pegawai</th>
+				<th>Nilai Reimburse</th>
+				<th>Keterangan</th>
+				<th>Status</th> 
+			</tr>
+			#foreach ($list in $data)
+			<tr>
+				<td>$!list.tanggal</td>
+				<td>$!list.masterPegawai.namaPegawai</td>
+				<td align=right>Rp $!numberTool.format('#,##0',$!list.nilai)</td>
+				<td>$!list.ket</td>
+				<td><center>
+					#if($!list.approve=="No")
+						No Approve
+					#else 
+						$!list.approve 
+					#end
+					</center></td>
+			</tr>
+			#end
+		</table>
+#end

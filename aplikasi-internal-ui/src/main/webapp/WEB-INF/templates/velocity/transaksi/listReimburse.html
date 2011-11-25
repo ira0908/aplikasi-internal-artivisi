@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Entry Kasbon Pegawai</title>
+<script type="text/javascript">
+
+    jQuery(function(){
+
+        //datepicker
+        var pickerOpts = {
+		dateFormat: "yy-mm-dd",
+        };
+        jQuery('input[name=tanggal]').datepicker(pickerOpts);
+
+    });
+
+	</script>
+</head>
+<body>
+		<h3>Reimburse Dokter</h3>
+		<br>
+		<form action=listReimburseDokter method=POST>
+		<table border=0 >
+			<tr>
+				<td>Nama Pegawai</td>
+				<td>
+					<select name=masterPegawai>
+						<option>-Pilih Pegawai-</option>
+						#foreach($pegawai in $data)
+						<option value=$!pegawai.id>$!pegawai.namaPegawai</option>
+						#end
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Tahun</td>
+				<td><input type="text" name=tanggal size=15></td>
+			</tr>
+			<tr>
+				<td><input type=submit value=Ok></td>
+			</tr>
+		</table>
+		</form>
+</body>
+</html>

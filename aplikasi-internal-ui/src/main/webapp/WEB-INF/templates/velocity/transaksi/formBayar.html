@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Pencairan Reimburse Dokter</title>
+<script type="text/javascript">
+
+    jQuery(function(){
+
+        //datepicker
+        var pickerOpts = {
+		dateFormat: "yy-mm-dd",
+        };
+        jQuery('input[name=tanggal]').datepicker(pickerOpts);
+
+    });
+
+	</script>
+</head>
+
+<body>
+<h2>Pencairan Reimburse Dokter</h2>
+<form action=bayar method=POST>
+<table>
+	<tr>
+		<td></td>
+		<td><input type="hidden" name='reimburseDokter' value=$!data.id size=15></td>
+	</tr>
+	<tr>
+		<td>Tanggal</td>
+		<td><input type="text" name='tanggal' size=15></td>
+	</tr>
+	<tr>
+		<td>Nilai Bayar</td>
+		<td><input type="text" name=nilai size=15></td>
+	</tr>
+	<tr>
+		<td>Keterangan</td>
+		<td><input type="text" name=ket size=25></td>
+	</tr>
+	<tr>
+		<td><input type="submit" value="Simpan"></td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

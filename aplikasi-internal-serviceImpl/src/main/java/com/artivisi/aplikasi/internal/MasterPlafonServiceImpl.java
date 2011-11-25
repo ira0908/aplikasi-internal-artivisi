@@ -1,5 +1,6 @@
 package com.artivisi.aplikasi.internal;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.artivisi.aplikasi.internal.entity.MasterPegawai;
 import com.artivisi.aplikasi.internal.entity.MasterPlafon;
+import com.artivisi.aplikasi.internal.entity.ReimburseDokter;
 
 @Service("masterPlafonService")
 @Transactional(readOnly=true)
@@ -49,6 +51,14 @@ public class MasterPlafonServiceImpl implements MasterPlafonService{
 	@Transactional(readOnly=false)
 	public void hapusPlafon(MasterPlafon plafon){
 		sessionFactory.getCurrentSession().delete(plafon);
+	}
+	
+	@Override
+	public MasterPlafon findByTahunDanPeg(MasterPegawai masterPegawai, Date tanggal){
+		return (MasterPlafon) sessionFactory.getCurrentSession()
+				.createQuery("from MasterPlafon where masterPegawai= :masterPegawai and tahun= year(:tanggal)")
+				.setParameter("masterPegawai", masterPegawai)
+				.setParameter("tanggal", tanggal).uniqueResult();
 	}
 	
 }

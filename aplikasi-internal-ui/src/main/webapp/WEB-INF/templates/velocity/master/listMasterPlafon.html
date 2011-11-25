@@ -9,6 +9,7 @@
 				<tr>
 					<th>Nama Pegawai</th>
 					<th>Plafon</th>
+					<th>Terpakai</th>
 					<th>Tahun</th>
 					<th>Action</th>
 				</tr>
@@ -16,6 +17,7 @@
 				<tr>
 					<td>$list.masterPegawai.namaPegawai</td>
 					<td align=right>Rp $!numberTool.format('#,##0',$list.plafon)</td>
+					<td align=right>Rp $!numberTool.format('#,##0',$list.terpakai)</td>
 					<td><center>$list.tahun</center></td>
 					<td><center><a href="formMasterPlafon?id=$list.id">Edit</a> | <a href="hapusPlafon?id=$list.id">Delete</a></center></td>
 				</tr>

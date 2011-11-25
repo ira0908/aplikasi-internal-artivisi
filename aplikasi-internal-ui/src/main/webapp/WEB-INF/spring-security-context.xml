@@ -8,12 +8,13 @@
  
  
  	<http auto-config="true">
-    	<intercept-url pattern="/app/transaksi/laporanKasbon" access="ROLE_KARYAWAN_VIEW" />
-    	<intercept-url pattern="/app/transaksi/lapKasbon" access="ROLE_KARYAWAN_VIEW" />
     	<intercept-url pattern="/app/master/*" access="ROLE_KARYAWAN_ALL" />
+    	<intercept-url pattern="/app/laporan/*" access="ROLE_KARYAWAN_VIEW" />
     	<intercept-url pattern="/app/transaksi/formBayarKasbon" access="ROLE_KARYAWAN_ALL" />
     	<intercept-url pattern="/app/transaksi/formKasbon" access="ROLE_KARYAWAN_EDIT" />
     	<intercept-url pattern="/app/transaksi/saldoKasbon" access="ROLE_KARYAWAN_EDIT" />
+    	<intercept-url pattern="/app/transaksi/appReimburse" access="ROLE_KARYAWAN_ALL" />
+    	<intercept-url pattern="/app/transaksi/listReimburseDokter" access="ROLE_KARYAWAN_VIEW" />
     	<intercept-url pattern="/index.html" access="ROLE_KARYAWAN_VIEW" />
     	<intercept-url pattern="/app/transaksi/currentUsername" access="ROLE_KARYAWAN_VIEW" />
     	<intercept-url pattern="/**" filters="none" />

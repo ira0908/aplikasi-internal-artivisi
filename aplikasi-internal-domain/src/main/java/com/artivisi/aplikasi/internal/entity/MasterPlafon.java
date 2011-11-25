@@ -1,5 +1,7 @@
 package com.artivisi.aplikasi.internal.entity;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +23,10 @@ public class MasterPlafon {
 	private MasterPegawai masterPegawai;
 	
 	@Column(name="plafon")
-	private Double plafon;
+	private BigDecimal plafon;
+	
+	@Column(name="terpakai")
+	private BigDecimal terpakai;
 	
 	@Column(name="tahun")
 	private String tahun;
@@ -42,12 +47,24 @@ public class MasterPlafon {
 		this.masterPegawai = masterPegawai;
 	}
 
-	public Double getPlafon() {
+	
+
+	public BigDecimal getPlafon() {
 		return plafon;
 	}
 
-	public void setPlafon(Double plafon) {
+	public void setPlafon(BigDecimal plafon) {
 		this.plafon = plafon;
+	}
+	
+	
+	
+	public BigDecimal getTerpakai() {
+		return terpakai;
+	}
+
+	public void setTerpakai(BigDecimal terpakai) {
+		this.terpakai = terpakai;
 	}
 
 	public String getTahun() {
