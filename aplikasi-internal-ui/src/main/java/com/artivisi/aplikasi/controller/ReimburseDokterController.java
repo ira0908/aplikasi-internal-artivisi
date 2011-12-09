@@ -88,7 +88,7 @@ public class ReimburseDokterController {
 		return mm;*/
 		
 		MasterUser mu = userService.findByUsername(SecurityHelper.getCurrentUsername());
-		if (!mu.getMasterGroup().getNamaGroup().equals("ADMINISTRATOR")){
+		if (mu.getMasterGroup().getNamaGroup().equals("USER")){
 			ModelMap mm = new ModelMap();
 			mm.addAttribute("data", reimburseDokterService.findById(id));
 			mm.addAttribute("daftarPegawai",pegawaiService.findByUser(mu.getMasterPegawai().getId()));
@@ -129,7 +129,7 @@ public class ReimburseDokterController {
 	@RequestMapping(value="/transaksi/listReimburse", method=RequestMethod.GET)
 	public ModelMap listReimburse(){
 		MasterUser mu = userService.findByUsername(SecurityHelper.getCurrentUsername());
-		if (!mu.getMasterGroup().getNamaGroup().equals("ADMINISTRATOR")){
+		if (mu.getMasterGroup().getNamaGroup().equals("USER")){
 			ModelMap mm =new ModelMap();
 			mm.addAttribute("data", pegawaiService.findByUser(mu.getMasterPegawai().getId()));
 			return mm;
