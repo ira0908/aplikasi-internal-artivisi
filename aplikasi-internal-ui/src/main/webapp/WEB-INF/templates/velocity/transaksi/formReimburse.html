@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Reimburse Dokter</title>
+<title>Reimburse</title>
 <script type="text/javascript">
 
     jQuery(function(){
@@ -17,15 +17,27 @@
 </head>
 
 <body>
-<h2>Entry Reimburse Dokter</h2>
+<h2>Entry Reimburse</h2>
 <form action="" method=POST>
 <table>
 	<tr>
 		<td>Nama Pegawai</td>
 		<td>
 			<select name=masterPegawai>
+				<option>-Pilih Pegawai-</option>
 				#foreach ($daftarPegawai in $daftarPegawai)
 				<option value=$!daftarPegawai.id>$!daftarPegawai.namaPegawai</option>
+				#end
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Type Reimburse</td>
+		<td>
+			<select name=typeReimburse>
+				<option>-Pilih Type Reimburse-</option>
+				#foreach ($reimburse in $type)
+				<option value=$!reimburse.id>$!reimburse.typeReimburse</option>
 				#end
 			</select>
 		</td>

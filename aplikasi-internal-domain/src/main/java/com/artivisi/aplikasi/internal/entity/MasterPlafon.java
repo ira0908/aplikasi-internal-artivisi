@@ -27,10 +27,18 @@ public class MasterPlafon {
 	
 	@Column(name="terpakai")
 	private BigDecimal terpakai;
+
+	@Column(name="cuti")
+	private BigDecimal cuti;
+	
+	@Column(name="jumlahCuti")
+	private BigDecimal jumlahCuti;
+	
 	
 	@Column(name="tahun")
 	private String tahun;
 
+	
 	public Long getId() {
 		return id;
 	}
@@ -65,6 +73,25 @@ public class MasterPlafon {
 
 	public void setTerpakai(BigDecimal terpakai) {
 		this.terpakai = terpakai;
+	}
+
+	
+	public BigDecimal getCuti() {
+		return cuti;
+	}
+
+	public void setCuti(BigDecimal cuti) {
+		this.cuti = cuti;
+	}
+
+	
+
+	public BigDecimal getJumlahCuti() {
+		return jumlahCuti;
+	}
+
+	public void setJumlahCuti(BigDecimal jumlahCuti) {
+		this.jumlahCuti = jumlahCuti;
 	}
 
 	public String getTahun() {

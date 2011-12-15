@@ -1,0 +1,37 @@
+#if (!$data || $data.isEmpty())
+Tidak ada data
+#else
+		<h3>Approve Reimburse</h3>
+		<br>
+		<table border=1 width=90%>
+			<tr>
+				<th>Tanggal</th>
+				<th>Type Reimburse</th>
+				<th>Pegawai</th>
+				<th>Nilai Reimburse</th>
+				<th>Sudah Dibayar</th>
+				<th>Keterangan</th>
+				<th>Action</th>
+			</tr>
+			#foreach ($list in $data)
+			<tr>
+				<td>$!list.tanggal</td>
+				<td>$!list.typeReimburse.typeReimburse</td>
+				<td>$!list.masterPegawai.namaPegawai</td>
+				<td align=right>Rp $!numberTool.format('#,##0',$!list.nilai)</td>
+				<td align=right>Rp $!numberTool.format('#,##0',$!list.diBayar)</td>
+				<td>$!list.ket</td>
+				<td><center>
+					#if ($!list.app=="No")
+					<a href=approveReimburse?id=$!list.id>Approve</a> 
+					| <a href=cancelReimburse?id=$!list.id>Cancel</a>
+					#else
+					<a href=listPembayaran?id=$!list.id>Lihat Pembayaran</a> |
+					<a href=formPencairan?id=$!list.id>Bayar</a>
+					#end
+					</center>
+				</td>
+			</tr>
+			#end
+		</table>
+#end

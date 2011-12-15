@@ -28,6 +28,9 @@
         <mapping class="com.artivisi.aplikasi.internal.entity.MasterPlafon"/>
         <mapping class="com.artivisi.aplikasi.internal.entity.MasterTypeReimburse"/>
         <mapping class="com.artivisi.aplikasi.internal.entity.ReimburseDokter"/>
+        <mapping class="com.artivisi.aplikasi.internal.entity.Reimburse"/>
         <mapping class="com.artivisi.aplikasi.internal.entity.PencairanReimburseDokter" />
+        <mapping class="com.artivisi.aplikasi.internal.entity.PencairanReimburse"/>
+        <mapping class="com.artivisi.aplikasi.internal.entity.PengajuanCuti"/>
     </session-factory>
 </hibernate-configuration>

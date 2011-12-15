@@ -15,6 +15,7 @@
     	<intercept-url pattern="/app/transaksi/saldoKasbon" access="ROLE_KARYAWAN_EDIT" />
     	<intercept-url pattern="/app/transaksi/appReimburse" access="ROLE_KARYAWAN_ALL" />
     	<intercept-url pattern="/app/transaksi/listReimburseDokter" access="ROLE_KARYAWAN_VIEW" />
+    	<intercept-url pattern="/app/transaksi/daftarReimburse" access="ROLE_KARYAWAN_ALL" />
     	<intercept-url pattern="/index.html" access="ROLE_KARYAWAN_VIEW" />
     	<intercept-url pattern="/app/transaksi/currentUsername" access="ROLE_KARYAWAN_VIEW" />
     	<intercept-url pattern="/**" filters="none" />
@@ -24,7 +25,7 @@
 	<authentication-manager>
     	<authentication-provider>
       		<user-service>
-        		<user name="test" password="test" authorities="ROLE_KARYAWAN_VIEW" />
+        		<user name="test" password="test" authorities="ROLE_KARYAWAN_ALL" />
       		</user-service>
     	</authentication-provider>
     	<authentication-provider user-service-ref='myUserDetailsService'/>

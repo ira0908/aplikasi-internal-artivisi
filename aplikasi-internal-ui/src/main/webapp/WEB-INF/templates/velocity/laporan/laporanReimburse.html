@@ -1,0 +1,41 @@
+<html>
+<head>
+<script type="text/javascript">
+
+    jQuery(function(){
+
+        //datepicker
+        var pickerOpts = {
+		dateFormat: "yy-mm-dd",
+        };
+        jQuery('input[name=mulai]').datepicker(pickerOpts);
+        jQuery('input[name=sampai]').datepicker(pickerOpts);
+
+    });
+
+	</script>
+</head>
+
+<body>
+<br>
+<h1>Laporan Kasbon Pegawai</h1>
+<form action="viewLapReimburse" method=POST>
+<table>
+<tr>
+<td>Pegawai</td><td>: <select name=masterPegawai>
+				<option>-Pilih Pegawai-</option>
+				#foreach($pegawai in $daftarPegawai)
+				<option value=$!pegawai.id>$!pegawai.namaPegawai</option>
+				#end
+			</select></td>
+</tr>
+<tr>
+<td>Periode</td><td>: <input type=text name=mulai  size=15> s/d 
+<input type=text name=sampai  size=15></td>
+</tr>
+<tr>&nbsp<td></td><td> 
+<input type=submit value="Cari"></td>
+</table>
+</form>
+</body>
+</html>

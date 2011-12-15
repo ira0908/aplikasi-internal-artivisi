@@ -39,19 +39,33 @@ Belum Ada Plafon
 						<th>Tanggal</th>
 						<th>Pegawai</th>
 						<th>Nilai Reimburse</th>
-						<th>Keterangan</th>
-						<th>Status</th>
 						<th>Dibayar</th>
+						<th>Status</th>
+						<th>Keterangan</th>
+						<th>Pembayaran</th>
 					</tr>
 					#foreach ($list in $data)
-					<tr>
-						<td>$!list.tanggal</td>
-						<td>$!list.masterPegawai.namaPegawai</td>
-						<td align=right>Rp $!numberTool.format('#,##0',$!list.nilai)</td>
-						<td>$!list.ket</td>
-						<td><center>$!list.approve</center></td>
-						<td align=right>Rp $!numberTool.format('#,##0',$!list.diBayar)</td>
-					</tr>
+						#if($!list.nilai==$!list.diBayar)
+						<tr bgcolor="grey"><b>
+							<td>$!list.tanggal</td>
+							<td>$!list.masterPegawai.namaPegawai</td>
+							<td align=right>Rp $!numberTool.format('#,##0',$!list.nilai)</td>
+							<td align=right>Rp $!numberTool.format('#,##0',$!list.diBayar)</td>
+							<td><center>$!list.approve</center></td>
+							<td>$!list.ket</td>
+							<td><a href=lihatPembayaran?id=$!list.id>Lihat Pembayaran</a></td></b>
+						</tr>
+						#else
+						<tr>
+							<td>$!list.tanggal</td>
+							<td>$!list.masterPegawai.namaPegawai</td>
+							<td align=right>Rp $!numberTool.format('#,##0',$!list.nilai)</td>
+							<td align=right>Rp $!numberTool.format('#,##0',$!list.diBayar)</td>
+							<td><center>$!list.approve</center></td>
+							<td>$!list.ket</td>
+							<td><a href=lihatPembayaran?id=$!list.id>Lihat Pembayaran</a></td>
+						</tr>
+						#end
 					#end
 				</table>
 			#end

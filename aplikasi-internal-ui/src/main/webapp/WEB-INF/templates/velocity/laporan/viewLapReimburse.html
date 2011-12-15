@@ -1,0 +1,44 @@
+<h1>Laporan Kasbon</h1>
+<br>
+<table border=0>
+<tr>
+	<td>Kode Pegawai</td>
+	<td>: <b>$header.kodePegawai</b></td>
+</tr>
+<tr>
+	<td>Nama Pegawai</td>
+	<td>: <b>$header.namaPegawai</b></td>
+</tr>
+<tr>
+	<td>Periode</td>
+	<td>: <b>$mulai</b> s/d <b>$sampai</b></td>
+</tr>
+</table>
+<br>
+<h3>Rincian Reimburse :</h3>
+	<table width=70% border=1 cellpadding=0 cellspacing=0>
+		<tr>
+			<th>Tanggal</th>
+			<th>Type Reimburse</th>
+			<th>Nilai Reimburse</th>
+			<th>Nilai Di Bayar</th>
+			<th>Status</th>
+			<th>Keterangan</th>
+		</tr>
+		#foreach($list in $data)
+		<tr>
+			<td><center>$list.tanggal</center></td>
+			<td>$list.typeReimburse.typeReimburse</td>
+			<td align=right>Rp $!numberTool.format('#,##0',$list.nilai)</td>
+			<td align=right>Rp $!numberTool.format('#,##0',$list.diBayar)</td>
+			<td>$list.app</td>
+			<td>$list.ket</td>
+		</tr>
+		#end
+		<tr>
+			<td colspan=2><b>Jumlah</b></td>
+			<td align=right><b>Rp $!numberTool.format('#,##0',$jumlahKasbon)</b></td>
+			<td align=right><b>Rp $!numberTool.format('#,##0',$jumlahBayar)</b></td>
+			<td>&nbsp</td>
+		</tr>
+	</table>

@@ -106,9 +106,6 @@ public class ReimburseDokterController {
 		reimburse.setApprove("No");
 		reimburse.setDiBayar(BigDecimal.ZERO);
 		reimburseDokterService.saveReimburse(reimburse);
-		MasterPlafon mp=plafonService.findByTahunDanPeg(reimburse.getMasterPegawai(), reimburse.getTanggal());
-		mp.setTerpakai(mp.getTerpakai().add(reimburse.getNilai()));
-		plafonService.savePlafon(mp);
 		return "redirect:/app/laporan/lapReimburseDokter";
 	}
 	
@@ -170,7 +167,7 @@ public class ReimburseDokterController {
 		MasterPlafon mp=plafonService.findByTahunDanPeg(rd.getMasterPegawai(), rd.getTanggal());
 		rd.setApprove("Cancel");
 		reimburseDokterService.saveReimburse(rd);
-		mp.setTerpakai(mp.getTerpakai().add(rd.getNilai()));
+		mp.setTerpakai(mp.getTerpakai().subtract(rd.getNilai()));
 		plafonService.savePlafon(mp);
 		return "redirect:appReimburse";
 	}
@@ -202,6 +199,9 @@ public class ReimburseDokterController {
 		ReimburseDokter rd = reimburseDokterService.findById(cair.getReimburseDokter().getId());
 		rd.setDiBayar(rd.getDiBayar().add(cair.getNilai()));
 		reimburseDokterService.saveReimburse(rd);
+		MasterPlafon mp=plafonService.findByTahunDanPeg(rd.getMasterPegawai(), rd.getTanggal());
+		mp.setTerpakai(mp.getTerpakai().add(cair.getNilai()));
+		plafonService.savePlafon(mp);
 		return "redirect:appReimburse";
 	}
 }

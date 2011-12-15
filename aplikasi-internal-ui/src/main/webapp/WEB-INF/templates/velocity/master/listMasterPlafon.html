@@ -5,11 +5,13 @@
 		#if (!$plafon || $plafon.isEmpty())
 		Tidak Ada plafon
 		#else
-			<table border=1 width=50%>
+			<table border=1 width=7%5>
 				<tr>
 					<th>Nama Pegawai</th>
-					<th>Plafon</th>
-					<th>Terpakai</th>
+					<th>Plafon Reimburse Dokter</th>
+					<th>Jumlah Plafon Terpakai</th>
+					<th>Jatah Cuti</th>
+					<th>Jumlah Cuti Terpakai</th>
 					<th>Tahun</th>
 					<th>Action</th>
 				</tr>
@@ -18,6 +20,8 @@
 					<td>$list.masterPegawai.namaPegawai</td>
 					<td align=right>Rp $!numberTool.format('#,##0',$list.plafon)</td>
 					<td align=right>Rp $!numberTool.format('#,##0',$list.terpakai)</td>
+					<td><center>$list.cuti Hari</center></td>
+					<td><center>$list.jumlahCuti Hari</center></td>
 					<td><center>$list.tahun</center></td>
 					<td><center><a href="formMasterPlafon?id=$list.id">Edit</a> | <a href="hapusPlafon?id=$list.id">Delete</a></center></td>
 				</tr>

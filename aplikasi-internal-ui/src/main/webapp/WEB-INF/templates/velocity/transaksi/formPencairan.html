@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Reimburse Dokter</title>
+<title>Pencairan Reimburse</title>
 <script type="text/javascript">
 
     jQuery(function(){
@@ -17,30 +17,24 @@
 </head>
 
 <body>
-<h2>Entry Reimburse Dokter</h2>
-<form action="" method=POST>
+<h2>Pencairan Reimburse Dokter</h2>
+<form action=cair method=POST>
 <table>
 	<tr>
-		<td>Nama Pegawai</td>
-		<td>
-			<select name=masterPegawai>
-				#foreach ($daftarPegawai in $daftarPegawai)
-				<option value=$!daftarPegawai.id>$!daftarPegawai.namaPegawai</option>
-				#end
-			</select>
-		</td>
+		<td></td>
+		<td><input type="hidden" name='reimburse' value=$!idReimburse.id size=15></td>
 	</tr>
 	<tr>
 		<td>Tanggal</td>
 		<td><input type="text" name='tanggal' size=15></td>
 	</tr>
 	<tr>
-		<td>Nilai Reimburse</td>
-		<td><input type="text" name='nilai' size=15></td>
+		<td>Nilai Bayar</td>
+		<td><input type="text" name=nilai size=15></td>
 	</tr>
 	<tr>
 		<td>Keterangan</td>
-		<td><input type="text" name='ket' size=25></td>
+		<td><input type="text" name=ket size=25></td>
 	</tr>
 	<tr>
 		<td><input type="submit" value="Simpan"></td>
